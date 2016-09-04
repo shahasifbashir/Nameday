@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using Windows.ApplicationModel.Contacts;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace NameDay
 {
+    /// <summary>
+    /// This class acts as the data source for the application
+    /// </summary>
     public class Namedaydata:INotifyPropertyChanged
     {
         private string _greeting ="Hello World!"; 
@@ -27,20 +31,45 @@ namespace NameDay
                     PropertyChanged(this, new PropertyChangedEventArgs("greeting"));
             }
         }
+        // this list will hold the names of all the people in nameday
         private List<NamedarModel> _Namedays = new List<NamedarModel>();
+        // this is the list which will be displayed and is acted upon by the search box
         public ObservableCollection<NamedarModel> Namedays { get; set; }
+        public ObservableCollection<ContactEx> Contacts { get; }
+            = new ObservableCollection<ContactEx>();
         public Namedaydata()
         {
             Namedays = new ObservableCollection<NamedarModel>();
-            for(int month=1;month<=12;month++)
+            if (Windows.ApplicationModel.DesignMode.DesignModeEnabled)
             {
-                _Namedays.Add(new NamedarModel(month, 1, new string[] { "Asif" }));
-                _Namedays.Add(new NamedarModel(month, 24, new string[] { "bashir","Shah" }));
+                Contacts = new ObservableCollection<ContactEx>
+                            {
+                                new ContactEx("contact","1"),
+                                new ContactEx("contact","2"),
+                                new ContactEx("contact","3"),
+                                new ContactEx("contact","4")
+                             };
+
+                for (int month = 1; month <= 12; month++)
+                {
+                    _Namedays.Add(new NamedarModel(month, 1, new string[] { "Asif" }));
+                    _Namedays.Add(new NamedarModel(month, 24, new string[] { "bashir", "Shah" }));
+                }
+                performFiltering();
             }
+            else
+                LoadData();
+        }
+
+        private  async void LoadData()
+        {
+             _Namedays = await NamedayRepository.GetallNamedays();
+            
             performFiltering();
         }
-        private NamedarModel  _selectedNameday;
 
+        private NamedarModel  _selectedNameday;
+        //this is the event handle in inotify interface that tell the framework that a specific thing has changeds
         public event PropertyChangedEventHandler PropertyChanged;
 
         public NamedarModel  selectedNameday
@@ -54,8 +83,22 @@ namespace NameDay
                 else
                     greeting = "Hello " + value.nameAsString;
 
+                UpdateContacts();
             }
         }
+
+        private async void UpdateContacts()
+        {
+            Contacts.Clear();
+            if(selectedNameday != null)
+            {
+                var contactStore = await ContactManager.RequestStoreAsync(ContactStoreAccessType.AllContactsReadOnly);
+                foreach (var name in selectedNameday.Names)
+                    foreach (var contact in await contactStore.FindContactsAsync(name))
+                        Contacts.Add(new ContactEx(contact));
+            }
+        }
+
         private string _filter;
 
         public string filter
@@ -70,7 +113,7 @@ namespace NameDay
                 performFiltering();
             }
         }
-
+        // this the filtering logic
         private void performFiltering()
         {
             if (_filter == null)

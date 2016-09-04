@@ -10,7 +10,7 @@
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>82623f5e-47b8-4d7a-af04-859f1dbb2fe4</PackageIdentityName>
     <IntermediateOutputPath>G:\projects\c# programs\NameDay\NameDay\obj\x86\Debug\</IntermediateOutputPath>
-    <RegisteredManifestChecksum>FEEE98F15B49AD94FAFA3D321E80240F26565009D528DDC624599B218516A197</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>6A6C5FE085CE12DD7BC6514BC7B429C9F1F01DBCBA43AFD8A631AEBCADB9D517</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>82623f5e-47b8-4d7a-af04-859f1dbb2fe4_1.0.0.0_x86__7mhbj2rx2jdhe</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>82623f5e-47b8-4d7a-af04-859f1dbb2fe4_7mhbj2rx2jdhe!App</RegisteredUserModeAppID>
     <RegisteredPackageID>82623f5e-47b8-4d7a-af04-859f1dbb2fe4</RegisteredPackageID>
@@ -22,7 +22,7 @@
     <AppXManifest Include="G:\projects\c# programs\NameDay\NameDay\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-09-03T21:30:30.567</Modified>
+      <Modified>2016-09-04T20:36:57.315</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
@@ -66,7 +66,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\projects\c# programs\NameDay\NameDay\bin\x86\Debug\Core\entrypoint\NameDay.exe">
       <PackagePath>entrypoint\NameDay.exe</PackagePath>
-      <Modified>2016-09-03T21:30:29.964</Modified>
+      <Modified>2016-09-04T20:36:56.049</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\projects\c# programs\NameDay\NameDay\bin\x86\Debug\Core\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -82,11 +82,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\projects\c# programs\NameDay\NameDay\bin\x86\Debug\Core\NameDay.exe">
       <PackagePath>NameDay.exe</PackagePath>
-      <Modified>2016-09-03T21:30:30.565</Modified>
+      <Modified>2016-09-04T20:36:57.305</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\projects\c# programs\NameDay\NameDay\bin\x86\Debug\Core\NameDay.xr.xml">
       <PackagePath>NameDay.xr.xml</PackagePath>
-      <Modified>2016-09-03T21:19:55.305</Modified>
+      <Modified>2016-09-04T20:36:55.718</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\projects\c# programs\NameDay\NameDay\bin\x86\Debug\Core\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
@@ -94,7 +94,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\projects\c# programs\NameDay\NameDay\bin\x86\Debug\Core\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2016-09-03T21:24:00.900</Modified>
+      <Modified>2016-09-04T20:36:56.741</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\projects\c# programs\NameDay\NameDay\bin\x86\Debug\Core\System.AppContext.dll">
       <PackagePath>System.AppContext.dll</PackagePath>

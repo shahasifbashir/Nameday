@@ -132,7 +132,7 @@ namespace NameDay.NameDay_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[11];
+            _typeNameTable = new string[17];
             _typeNameTable[0] = "NameDay.Namedaydata";
             _typeNameTable[1] = "Object";
             _typeNameTable[2] = "String";
@@ -141,11 +141,17 @@ namespace NameDay.NameDay_XamlTypeInfo
             _typeNameTable[5] = "NameDay.NamedarModel";
             _typeNameTable[6] = "Int32";
             _typeNameTable[7] = "System.Collections.Generic.IEnumerable`1<String>";
-            _typeNameTable[8] = "NameDay.MainPage";
-            _typeNameTable[9] = "Windows.UI.Xaml.Controls.Page";
-            _typeNameTable[10] = "Windows.UI.Xaml.Controls.UserControl";
+            _typeNameTable[8] = "System.Collections.ObjectModel.ObservableCollection`1<NameDay.ContactEx>";
+            _typeNameTable[9] = "System.Collections.ObjectModel.Collection`1<NameDay.ContactEx>";
+            _typeNameTable[10] = "NameDay.ContactEx";
+            _typeNameTable[11] = "Windows.ApplicationModel.Contacts.Contact";
+            _typeNameTable[12] = "Windows.UI.Xaml.Visibility";
+            _typeNameTable[13] = "Windows.UI.Xaml.Media.ImageBrush";
+            _typeNameTable[14] = "NameDay.MainPage";
+            _typeNameTable[15] = "Windows.UI.Xaml.Controls.Page";
+            _typeNameTable[16] = "Windows.UI.Xaml.Controls.UserControl";
 
-            _typeTable = new global::System.Type[11];
+            _typeTable = new global::System.Type[17];
             _typeTable[0] = typeof(global::NameDay.Namedaydata);
             _typeTable[1] = typeof(global::System.Object);
             _typeTable[2] = typeof(global::System.String);
@@ -154,9 +160,15 @@ namespace NameDay.NameDay_XamlTypeInfo
             _typeTable[5] = typeof(global::NameDay.NamedarModel);
             _typeTable[6] = typeof(global::System.Int32);
             _typeTable[7] = typeof(global::System.Collections.Generic.IEnumerable<global::System.String>);
-            _typeTable[8] = typeof(global::NameDay.MainPage);
-            _typeTable[9] = typeof(global::Windows.UI.Xaml.Controls.Page);
-            _typeTable[10] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
+            _typeTable[8] = typeof(global::System.Collections.ObjectModel.ObservableCollection<global::NameDay.ContactEx>);
+            _typeTable[9] = typeof(global::System.Collections.ObjectModel.Collection<global::NameDay.ContactEx>);
+            _typeTable[10] = typeof(global::NameDay.ContactEx);
+            _typeTable[11] = typeof(global::Windows.ApplicationModel.Contacts.Contact);
+            _typeTable[12] = typeof(global::Windows.UI.Xaml.Visibility);
+            _typeTable[13] = typeof(global::Windows.UI.Xaml.Media.ImageBrush);
+            _typeTable[14] = typeof(global::NameDay.MainPage);
+            _typeTable[15] = typeof(global::Windows.UI.Xaml.Controls.Page);
+            _typeTable[16] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -194,7 +206,11 @@ namespace NameDay.NameDay_XamlTypeInfo
         private object Activate_0_Namedaydata() { return new global::NameDay.Namedaydata(); }
         private object Activate_3_ObservableCollection() { return new global::System.Collections.ObjectModel.ObservableCollection<global::NameDay.NamedarModel>(); }
         private object Activate_4_Collection() { return new global::System.Collections.ObjectModel.Collection<global::NameDay.NamedarModel>(); }
-        private object Activate_8_MainPage() { return new global::NameDay.MainPage(); }
+        private object Activate_5_NamedarModel() { return new global::NameDay.NamedarModel(); }
+        private object Activate_8_ObservableCollection() { return new global::System.Collections.ObjectModel.ObservableCollection<global::NameDay.ContactEx>(); }
+        private object Activate_9_Collection() { return new global::System.Collections.ObjectModel.Collection<global::NameDay.ContactEx>(); }
+        private object Activate_11_Contact() { return new global::Windows.ApplicationModel.Contacts.Contact(); }
+        private object Activate_14_MainPage() { return new global::NameDay.MainPage(); }
         private void VectorAdd_3_ObservableCollection(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::NameDay.NamedarModel>)instance;
@@ -205,6 +221,18 @@ namespace NameDay.NameDay_XamlTypeInfo
         {
             var collection = (global::System.Collections.Generic.ICollection<global::NameDay.NamedarModel>)instance;
             var newItem = (global::NameDay.NamedarModel)item;
+            collection.Add(newItem);
+        }
+        private void VectorAdd_8_ObservableCollection(object instance, object item)
+        {
+            var collection = (global::System.Collections.Generic.ICollection<global::NameDay.ContactEx>)instance;
+            var newItem = (global::NameDay.ContactEx)item;
+            collection.Add(newItem);
+        }
+        private void VectorAdd_9_Collection(object instance, object item)
+        {
+            var collection = (global::System.Collections.Generic.ICollection<global::NameDay.ContactEx>)instance;
+            var newItem = (global::NameDay.ContactEx)item;
             collection.Add(newItem);
         }
 
@@ -223,6 +251,7 @@ namespace NameDay.NameDay_XamlTypeInfo
                 userType.Activator = Activate_0_Namedaydata;
                 userType.AddMemberName("greeting");
                 userType.AddMemberName("Namedays");
+                userType.AddMemberName("Contacts");
                 userType.AddMemberName("selectedNameday");
                 userType.AddMemberName("filter");
                 userType.SetIsLocalType();
@@ -253,9 +282,10 @@ namespace NameDay.NameDay_XamlTypeInfo
 
             case 5:   //  NameDay.NamedarModel
                 userType = new global::NameDay.NameDay_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.AddMemberName("month");
-                userType.AddMemberName("day");
-                userType.AddMemberName("names");
+                userType.Activator = Activate_5_NamedarModel;
+                userType.AddMemberName("Month");
+                userType.AddMemberName("Day");
+                userType.AddMemberName("Names");
                 userType.AddMemberName("nameAsString");
                 userType.SetIsLocalType();
                 xamlType = userType;
@@ -271,18 +301,56 @@ namespace NameDay.NameDay_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 8:   //  NameDay.MainPage
-                userType = new global::NameDay.NameDay_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_8_MainPage;
+            case 8:   //  System.Collections.ObjectModel.ObservableCollection`1<NameDay.ContactEx>
+                userType = new global::NameDay.NameDay_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Collections.ObjectModel.Collection`1<NameDay.ContactEx>"));
+                userType.CollectionAdd = VectorAdd_8_ObservableCollection;
+                userType.SetIsReturnTypeStub();
+                xamlType = userType;
+                break;
+
+            case 9:   //  System.Collections.ObjectModel.Collection`1<NameDay.ContactEx>
+                userType = new global::NameDay.NameDay_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.Activator = Activate_9_Collection;
+                userType.CollectionAdd = VectorAdd_9_Collection;
+                xamlType = userType;
+                break;
+
+            case 10:   //  NameDay.ContactEx
+                userType = new global::NameDay.NameDay_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.AddMemberName("Contact");
+                userType.AddMemberName("initials");
+                userType.AddMemberName("EmailVisibility");
+                userType.AddMemberName("picture");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 9:   //  Windows.UI.Xaml.Controls.Page
+            case 11:   //  Windows.ApplicationModel.Contacts.Contact
+                userType = new global::NameDay.NameDay_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.SetIsReturnTypeStub();
+                xamlType = userType;
+                break;
+
+            case 12:   //  Windows.UI.Xaml.Visibility
                 xamlType = new global::NameDay.NameDay_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 10:   //  Windows.UI.Xaml.Controls.UserControl
+            case 13:   //  Windows.UI.Xaml.Media.ImageBrush
+                xamlType = new global::NameDay.NameDay_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 14:   //  NameDay.MainPage
+                userType = new global::NameDay.NameDay_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_14_MainPage;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 15:   //  Windows.UI.Xaml.Controls.Page
+                xamlType = new global::NameDay.NameDay_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 16:   //  Windows.UI.Xaml.Controls.UserControl
                 xamlType = new global::NameDay.NameDay_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
             }
@@ -310,57 +378,82 @@ namespace NameDay.NameDay_XamlTypeInfo
             var that = (global::NameDay.Namedaydata)instance;
             that.Namedays = (global::System.Collections.ObjectModel.ObservableCollection<global::NameDay.NamedarModel>)Value;
         }
-        private object get_2_NamedarModel_month(object instance)
+        private object get_2_NamedarModel_Month(object instance)
         {
             var that = (global::NameDay.NamedarModel)instance;
-            return that.month;
+            return that.Month;
         }
-        private void set_2_NamedarModel_month(object instance, object Value)
+        private void set_2_NamedarModel_Month(object instance, object Value)
         {
             var that = (global::NameDay.NamedarModel)instance;
-            that.month = (global::System.Int32)Value;
+            that.Month = (global::System.Int32)Value;
         }
-        private object get_3_NamedarModel_day(object instance)
+        private object get_3_NamedarModel_Day(object instance)
         {
             var that = (global::NameDay.NamedarModel)instance;
-            return that.day;
+            return that.Day;
         }
-        private void set_3_NamedarModel_day(object instance, object Value)
+        private void set_3_NamedarModel_Day(object instance, object Value)
         {
             var that = (global::NameDay.NamedarModel)instance;
-            that.day = (global::System.Int32)Value;
+            that.Day = (global::System.Int32)Value;
         }
-        private object get_4_NamedarModel_names(object instance)
+        private object get_4_NamedarModel_Names(object instance)
         {
             var that = (global::NameDay.NamedarModel)instance;
-            return that.names;
+            return that.Names;
         }
-        private void set_4_NamedarModel_names(object instance, object Value)
+        private void set_4_NamedarModel_Names(object instance, object Value)
         {
             var that = (global::NameDay.NamedarModel)instance;
-            that.names = (global::System.Collections.Generic.IEnumerable<global::System.String>)Value;
+            that.Names = (global::System.Collections.Generic.IEnumerable<global::System.String>)Value;
         }
         private object get_5_NamedarModel_nameAsString(object instance)
         {
             var that = (global::NameDay.NamedarModel)instance;
             return that.nameAsString;
         }
-        private object get_6_Namedaydata_selectedNameday(object instance)
+        private object get_6_Namedaydata_Contacts(object instance)
+        {
+            var that = (global::NameDay.Namedaydata)instance;
+            return that.Contacts;
+        }
+        private object get_7_ContactEx_Contact(object instance)
+        {
+            var that = (global::NameDay.ContactEx)instance;
+            return that.Contact;
+        }
+        private object get_8_ContactEx_initials(object instance)
+        {
+            var that = (global::NameDay.ContactEx)instance;
+            return that.initials;
+        }
+        private object get_9_ContactEx_EmailVisibility(object instance)
+        {
+            var that = (global::NameDay.ContactEx)instance;
+            return that.EmailVisibility;
+        }
+        private object get_10_ContactEx_picture(object instance)
+        {
+            var that = (global::NameDay.ContactEx)instance;
+            return that.picture;
+        }
+        private object get_11_Namedaydata_selectedNameday(object instance)
         {
             var that = (global::NameDay.Namedaydata)instance;
             return that.selectedNameday;
         }
-        private void set_6_Namedaydata_selectedNameday(object instance, object Value)
+        private void set_11_Namedaydata_selectedNameday(object instance, object Value)
         {
             var that = (global::NameDay.Namedaydata)instance;
             that.selectedNameday = (global::NameDay.NamedarModel)Value;
         }
-        private object get_7_Namedaydata_filter(object instance)
+        private object get_12_Namedaydata_filter(object instance)
         {
             var that = (global::NameDay.Namedaydata)instance;
             return that.filter;
         }
-        private void set_7_Namedaydata_filter(object instance, object Value)
+        private void set_12_Namedaydata_filter(object instance, object Value)
         {
             var that = (global::NameDay.Namedaydata)instance;
             that.filter = (global::System.String)Value;
@@ -385,23 +478,23 @@ namespace NameDay.NameDay_XamlTypeInfo
                 xamlMember.Getter = get_1_Namedaydata_Namedays;
                 xamlMember.Setter = set_1_Namedaydata_Namedays;
                 break;
-            case "NameDay.NamedarModel.month":
+            case "NameDay.NamedarModel.Month":
                 userType = (global::NameDay.NameDay_XamlTypeInfo.XamlUserType)GetXamlTypeByName("NameDay.NamedarModel");
-                xamlMember = new global::NameDay.NameDay_XamlTypeInfo.XamlMember(this, "month", "Int32");
-                xamlMember.Getter = get_2_NamedarModel_month;
-                xamlMember.Setter = set_2_NamedarModel_month;
+                xamlMember = new global::NameDay.NameDay_XamlTypeInfo.XamlMember(this, "Month", "Int32");
+                xamlMember.Getter = get_2_NamedarModel_Month;
+                xamlMember.Setter = set_2_NamedarModel_Month;
                 break;
-            case "NameDay.NamedarModel.day":
+            case "NameDay.NamedarModel.Day":
                 userType = (global::NameDay.NameDay_XamlTypeInfo.XamlUserType)GetXamlTypeByName("NameDay.NamedarModel");
-                xamlMember = new global::NameDay.NameDay_XamlTypeInfo.XamlMember(this, "day", "Int32");
-                xamlMember.Getter = get_3_NamedarModel_day;
-                xamlMember.Setter = set_3_NamedarModel_day;
+                xamlMember = new global::NameDay.NameDay_XamlTypeInfo.XamlMember(this, "Day", "Int32");
+                xamlMember.Getter = get_3_NamedarModel_Day;
+                xamlMember.Setter = set_3_NamedarModel_Day;
                 break;
-            case "NameDay.NamedarModel.names":
+            case "NameDay.NamedarModel.Names":
                 userType = (global::NameDay.NameDay_XamlTypeInfo.XamlUserType)GetXamlTypeByName("NameDay.NamedarModel");
-                xamlMember = new global::NameDay.NameDay_XamlTypeInfo.XamlMember(this, "names", "System.Collections.Generic.IEnumerable`1<String>");
-                xamlMember.Getter = get_4_NamedarModel_names;
-                xamlMember.Setter = set_4_NamedarModel_names;
+                xamlMember = new global::NameDay.NameDay_XamlTypeInfo.XamlMember(this, "Names", "System.Collections.Generic.IEnumerable`1<String>");
+                xamlMember.Getter = get_4_NamedarModel_Names;
+                xamlMember.Setter = set_4_NamedarModel_Names;
                 break;
             case "NameDay.NamedarModel.nameAsString":
                 userType = (global::NameDay.NameDay_XamlTypeInfo.XamlUserType)GetXamlTypeByName("NameDay.NamedarModel");
@@ -409,17 +502,47 @@ namespace NameDay.NameDay_XamlTypeInfo
                 xamlMember.Getter = get_5_NamedarModel_nameAsString;
                 xamlMember.SetIsReadOnly();
                 break;
+            case "NameDay.Namedaydata.Contacts":
+                userType = (global::NameDay.NameDay_XamlTypeInfo.XamlUserType)GetXamlTypeByName("NameDay.Namedaydata");
+                xamlMember = new global::NameDay.NameDay_XamlTypeInfo.XamlMember(this, "Contacts", "System.Collections.ObjectModel.ObservableCollection`1<NameDay.ContactEx>");
+                xamlMember.Getter = get_6_Namedaydata_Contacts;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "NameDay.ContactEx.Contact":
+                userType = (global::NameDay.NameDay_XamlTypeInfo.XamlUserType)GetXamlTypeByName("NameDay.ContactEx");
+                xamlMember = new global::NameDay.NameDay_XamlTypeInfo.XamlMember(this, "Contact", "Windows.ApplicationModel.Contacts.Contact");
+                xamlMember.Getter = get_7_ContactEx_Contact;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "NameDay.ContactEx.initials":
+                userType = (global::NameDay.NameDay_XamlTypeInfo.XamlUserType)GetXamlTypeByName("NameDay.ContactEx");
+                xamlMember = new global::NameDay.NameDay_XamlTypeInfo.XamlMember(this, "initials", "String");
+                xamlMember.Getter = get_8_ContactEx_initials;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "NameDay.ContactEx.EmailVisibility":
+                userType = (global::NameDay.NameDay_XamlTypeInfo.XamlUserType)GetXamlTypeByName("NameDay.ContactEx");
+                xamlMember = new global::NameDay.NameDay_XamlTypeInfo.XamlMember(this, "EmailVisibility", "Windows.UI.Xaml.Visibility");
+                xamlMember.Getter = get_9_ContactEx_EmailVisibility;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "NameDay.ContactEx.picture":
+                userType = (global::NameDay.NameDay_XamlTypeInfo.XamlUserType)GetXamlTypeByName("NameDay.ContactEx");
+                xamlMember = new global::NameDay.NameDay_XamlTypeInfo.XamlMember(this, "picture", "Windows.UI.Xaml.Media.ImageBrush");
+                xamlMember.Getter = get_10_ContactEx_picture;
+                xamlMember.SetIsReadOnly();
+                break;
             case "NameDay.Namedaydata.selectedNameday":
                 userType = (global::NameDay.NameDay_XamlTypeInfo.XamlUserType)GetXamlTypeByName("NameDay.Namedaydata");
                 xamlMember = new global::NameDay.NameDay_XamlTypeInfo.XamlMember(this, "selectedNameday", "NameDay.NamedarModel");
-                xamlMember.Getter = get_6_Namedaydata_selectedNameday;
-                xamlMember.Setter = set_6_Namedaydata_selectedNameday;
+                xamlMember.Getter = get_11_Namedaydata_selectedNameday;
+                xamlMember.Setter = set_11_Namedaydata_selectedNameday;
                 break;
             case "NameDay.Namedaydata.filter":
                 userType = (global::NameDay.NameDay_XamlTypeInfo.XamlUserType)GetXamlTypeByName("NameDay.Namedaydata");
                 xamlMember = new global::NameDay.NameDay_XamlTypeInfo.XamlMember(this, "filter", "String");
-                xamlMember.Getter = get_7_Namedaydata_filter;
-                xamlMember.Setter = set_7_Namedaydata_filter;
+                xamlMember.Getter = get_12_Namedaydata_filter;
+                xamlMember.Setter = set_12_Namedaydata_filter;
                 break;
             }
             return xamlMember;
