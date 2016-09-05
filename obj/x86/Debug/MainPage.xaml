@@ -25,11 +25,16 @@
                 <Ellipse Fill="{Binding picture, Mode=OneWay}" Height="100" VerticalAlignment="Top" Width="100"/>
                 <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="20,0,0,0">
                     <TextBlock Text="{Binding Contact.FullName, Mode=OneWay}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                    <Button x:Name="button" Content="Email" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="{Binding EmailVisibility, Mode=OneWay}"/>
+                    <Button x:ConnectionId='1' x:Name="email_button" Content="Email" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="{Binding EmailVisibility, Mode=OneWay}"                           />
                 </StackPanel>
             </Grid>
         </DataTemplate>
     </Page.Resources>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Icon="Calendar" Label="Create Reminder" Command="{Binding AddReminderCommand, Mode=OneWay}"/>
+        </CommandBar>
+    </Page.BottomAppBar>
     <Page.DataContext>
         <local:Namedaydata/>
     </Page.DataContext>
@@ -44,17 +49,17 @@
                 <RowDefinition Height="50"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <ListView x:ConnectionId='2' x:Name="listView" ItemTemplate="{StaticResource NamedarModelTemplate}" ItemsSource="{Binding Namedays}" Grid.Row="1" SelectedItem="{Binding selectedNameday, Mode=TwoWay, UpdateSourceTrigger=Default}"/>
-            <TextBox x:ConnectionId='3' x:Name="textBox" TextWrapping="Wrap" Text="{Binding filter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" PlaceholderText="Search for names" FontSize="13.333" Margin="10,10,10,5"/>
+            <ListView x:ConnectionId='3' x:Name="listView" ItemTemplate="{StaticResource NamedarModelTemplate}" ItemsSource="{Binding Namedays}" Grid.Row="1" SelectedItem="{Binding selectedNameday, Mode=TwoWay, UpdateSourceTrigger=Default}"/>
+            <TextBox x:ConnectionId='4' x:Name="textBox" TextWrapping="Wrap" Text="{Binding filter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" PlaceholderText="Search for names" FontSize="13.333" Margin="10,10,10,5"/>
         </Grid>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock x:ConnectionId='1' x:Name="textBlock" HorizontalAlignment="Left" Height="17" Margin="10,0,0,30.2" TextWrapping="Wrap" Text="{Binding greeting}" VerticalAlignment="Bottom" Width="121"/>
+            <TextBlock x:ConnectionId='2' x:Name="textBlock" HorizontalAlignment="Left" Height="17" Margin="10,0,0,30.2" TextWrapping="Wrap" Text="{Binding greeting}" VerticalAlignment="Bottom" Width="121"/>
             <StackPanel Grid.Row="1">
-                <ItemsControl Height="100" ItemsSource="{Binding Contacts}" ItemTemplate="{StaticResource ContactExTemplate}"/>
+                <ItemsControl ItemsSource="{Binding Contacts}" ItemTemplate="{StaticResource ContactExTemplate}"/>
             </StackPanel>
         </Grid>
 

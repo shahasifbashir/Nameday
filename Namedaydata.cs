@@ -6,15 +6,17 @@ using System.Linq;
 using Windows.ApplicationModel.Contacts;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Email;
+using Windows.ApplicationModel.Appointments;
 
 namespace NameDay
 {
     /// <summary>
     /// This class acts as the data source for the application
     /// </summary>
-    public class Namedaydata:INotifyPropertyChanged
+    public class Namedaydata : INotifyPropertyChanged
     {
-        private string _greeting ="Hello World!"; 
+        private string _greeting = "Hello World!";
         public string greeting
         {
             get
@@ -39,6 +41,7 @@ namespace NameDay
             = new ObservableCollection<ContactEx>();
         public Namedaydata()
         {
+            AddReminderCommand = new AddRemindercommand(this);
             Namedays = new ObservableCollection<NamedarModel>();
             if (Windows.ApplicationModel.DesignMode.DesignModeEnabled)
             {
@@ -61,18 +64,18 @@ namespace NameDay
                 LoadData();
         }
 
-        private  async void LoadData()
+        private async void LoadData()
         {
-             _Namedays = await NamedayRepository.GetallNamedays();
-            
+            _Namedays = await NamedayRepository.GetallNamedays();
+
             performFiltering();
         }
 
-        private NamedarModel  _selectedNameday;
+        private NamedarModel _selectedNameday;
         //this is the event handle in inotify interface that tell the framework that a specific thing has changeds
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public NamedarModel  selectedNameday
+        public NamedarModel selectedNameday
         {
             get { return _selectedNameday; }
             set
@@ -84,13 +87,14 @@ namespace NameDay
                     greeting = "Hello " + value.nameAsString;
 
                 UpdateContacts();
+                AddReminderCommand.FireCanExecuteChanged();
             }
         }
 
         private async void UpdateContacts()
         {
             Contacts.Clear();
-            if(selectedNameday != null)
+            if (selectedNameday != null)
             {
                 var contactStore = await ContactManager.RequestStoreAsync(ContactStoreAccessType.AllContactsReadOnly);
                 foreach (var name in selectedNameday.Names)
@@ -124,12 +128,53 @@ namespace NameDay
             foreach (var x in result)
                 Namedays.Remove(x);
             var resultcount = result.Count();
-            for(int i =0;i<resultcount;i++)
+            for (int i = 0; i < resultcount; i++)
             {
                 var resultItem = result[i];
                 if (i + 1 > Namedays.Count || !Namedays[i].Equals(resultItem))
                     Namedays.Insert(i, resultItem);
             }
         }
+        //this function will make the send email dialog box avaliable
+        public async Task SendEmailAsync(Contact contact)
+        {
+            if (contact == null || contact.Emails.Count == 0)
+                return;
+            var msg = new EmailMessage();
+            msg.To.Add(new EmailRecipient(contact.Emails[0].Address));
+            msg.Subject = "Happy nameday";
+            await EmailManager.ShowComposeNewEmailAsync(msg);
+        }
+        public AddRemindercommand AddReminderCommand { get; }
+        //Name day appoint ment manager
+        public async void AddReminderToCalander()
+        {
+            var appointment = new Appointment();
+            appointment.Subject = "Nameday reminder for " + selectedNameday.nameAsString;
+            appointment.AllDay = true;
+            appointment.BusyStatus = AppointmentBusyStatus.Free;
+            var dateThisYear = new DateTime
+            (
+                DateTime.Now.Year, selectedNameday.Month, selectedNameday.Day
+            );
+            appointment.StartTime = dateThisYear < DateTime.Now ? dateThisYear.AddYears(1) : dateThisYear;
+            await AppointmentManager.ShowEditNewAppointmentAsync(appointment);
+        }
+    }
+    public class AddRemindercommand : System.Windows.Input.ICommand
+    {
+        private Namedaydata _nmd;
+        public AddRemindercommand(Namedaydata nmd)
+        {
+            _nmd = nmd;
+        }
+        public event EventHandler CanExecuteChanged;
+
+        public bool CanExecute(object parameter) => _nmd.selectedNameday != null;
+
+
+        public void Execute(object parameter) => _nmd.AddReminderToCalander();
+        public void FireCanExecuteChanged() => CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+
     }
 }

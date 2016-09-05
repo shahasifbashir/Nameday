@@ -132,7 +132,7 @@ namespace NameDay.NameDay_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[17];
+            _typeNameTable = new string[18];
             _typeNameTable[0] = "NameDay.Namedaydata";
             _typeNameTable[1] = "Object";
             _typeNameTable[2] = "String";
@@ -147,11 +147,12 @@ namespace NameDay.NameDay_XamlTypeInfo
             _typeNameTable[11] = "Windows.ApplicationModel.Contacts.Contact";
             _typeNameTable[12] = "Windows.UI.Xaml.Visibility";
             _typeNameTable[13] = "Windows.UI.Xaml.Media.ImageBrush";
-            _typeNameTable[14] = "NameDay.MainPage";
-            _typeNameTable[15] = "Windows.UI.Xaml.Controls.Page";
-            _typeNameTable[16] = "Windows.UI.Xaml.Controls.UserControl";
+            _typeNameTable[14] = "NameDay.AddRemindercommand";
+            _typeNameTable[15] = "NameDay.MainPage";
+            _typeNameTable[16] = "Windows.UI.Xaml.Controls.Page";
+            _typeNameTable[17] = "Windows.UI.Xaml.Controls.UserControl";
 
-            _typeTable = new global::System.Type[17];
+            _typeTable = new global::System.Type[18];
             _typeTable[0] = typeof(global::NameDay.Namedaydata);
             _typeTable[1] = typeof(global::System.Object);
             _typeTable[2] = typeof(global::System.String);
@@ -166,9 +167,10 @@ namespace NameDay.NameDay_XamlTypeInfo
             _typeTable[11] = typeof(global::Windows.ApplicationModel.Contacts.Contact);
             _typeTable[12] = typeof(global::Windows.UI.Xaml.Visibility);
             _typeTable[13] = typeof(global::Windows.UI.Xaml.Media.ImageBrush);
-            _typeTable[14] = typeof(global::NameDay.MainPage);
-            _typeTable[15] = typeof(global::Windows.UI.Xaml.Controls.Page);
-            _typeTable[16] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
+            _typeTable[14] = typeof(global::NameDay.AddRemindercommand);
+            _typeTable[15] = typeof(global::NameDay.MainPage);
+            _typeTable[16] = typeof(global::Windows.UI.Xaml.Controls.Page);
+            _typeTable[17] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -210,7 +212,7 @@ namespace NameDay.NameDay_XamlTypeInfo
         private object Activate_8_ObservableCollection() { return new global::System.Collections.ObjectModel.ObservableCollection<global::NameDay.ContactEx>(); }
         private object Activate_9_Collection() { return new global::System.Collections.ObjectModel.Collection<global::NameDay.ContactEx>(); }
         private object Activate_11_Contact() { return new global::Windows.ApplicationModel.Contacts.Contact(); }
-        private object Activate_14_MainPage() { return new global::NameDay.MainPage(); }
+        private object Activate_15_MainPage() { return new global::NameDay.MainPage(); }
         private void VectorAdd_3_ObservableCollection(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::NameDay.NamedarModel>)instance;
@@ -254,6 +256,7 @@ namespace NameDay.NameDay_XamlTypeInfo
                 userType.AddMemberName("Contacts");
                 userType.AddMemberName("selectedNameday");
                 userType.AddMemberName("filter");
+                userType.AddMemberName("AddReminderCommand");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -339,18 +342,25 @@ namespace NameDay.NameDay_XamlTypeInfo
                 xamlType = new global::NameDay.NameDay_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 14:   //  NameDay.MainPage
-                userType = new global::NameDay.NameDay_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_14_MainPage;
+            case 14:   //  NameDay.AddRemindercommand
+                userType = new global::NameDay.NameDay_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.SetIsReturnTypeStub();
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 15:   //  Windows.UI.Xaml.Controls.Page
+            case 15:   //  NameDay.MainPage
+                userType = new global::NameDay.NameDay_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_15_MainPage;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 16:   //  Windows.UI.Xaml.Controls.Page
                 xamlType = new global::NameDay.NameDay_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 16:   //  Windows.UI.Xaml.Controls.UserControl
+            case 17:   //  Windows.UI.Xaml.Controls.UserControl
                 xamlType = new global::NameDay.NameDay_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
             }
@@ -458,6 +468,11 @@ namespace NameDay.NameDay_XamlTypeInfo
             var that = (global::NameDay.Namedaydata)instance;
             that.filter = (global::System.String)Value;
         }
+        private object get_13_Namedaydata_AddReminderCommand(object instance)
+        {
+            var that = (global::NameDay.Namedaydata)instance;
+            return that.AddReminderCommand;
+        }
 
         private global::Windows.UI.Xaml.Markup.IXamlMember CreateXamlMember(string longMemberName)
         {
@@ -543,6 +558,12 @@ namespace NameDay.NameDay_XamlTypeInfo
                 xamlMember = new global::NameDay.NameDay_XamlTypeInfo.XamlMember(this, "filter", "String");
                 xamlMember.Getter = get_12_Namedaydata_filter;
                 xamlMember.Setter = set_12_Namedaydata_filter;
+                break;
+            case "NameDay.Namedaydata.AddReminderCommand":
+                userType = (global::NameDay.NameDay_XamlTypeInfo.XamlUserType)GetXamlTypeByName("NameDay.Namedaydata");
+                xamlMember = new global::NameDay.NameDay_XamlTypeInfo.XamlMember(this, "AddReminderCommand", "NameDay.AddRemindercommand");
+                xamlMember.Getter = get_13_Namedaydata_AddReminderCommand;
+                xamlMember.SetIsReadOnly();
                 break;
             }
             return xamlMember;

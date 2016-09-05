@@ -26,5 +26,14 @@ namespace NameDay
         {
             this.InitializeComponent();
         }
+
+        private async void email_button_Click(object sender, RoutedEventArgs e)
+        {
+            //Here we cast the senders data contactEx class type
+            var contact  = ((FrameworkElement)sender).DataContext as ContactEx;
+            //here the class is made diretctly to the SendEmailAsync by casting the data context as the type of namespace data
+            if (contact != null)
+                await ((Namedaydata)this.DataContext).SendEmailAsync(contact.Contact);
+        }
     }
 }

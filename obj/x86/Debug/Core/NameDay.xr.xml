@@ -9,6 +9,7 @@
     <RootPropertyPathName Name="Names" />
     <RootPropertyPathName Name="Day" />
     <RootPropertyPathName Name="Month" />
+    <RootPropertyPathName Name="AddReminderCommand" />
     <RootPropertyPathName Name="Contacts" />
     <RootPropertyPathName Name="greeting" />
     <RootPropertyPathName Name="filter" />
@@ -21,6 +22,7 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Page">
       <RootProperty Name="Resources" />
+      <RootProperty Name="BottomAppBar" />
       <RootProperty Name="DataContext" />
       <RootProperty Name="Content" />
     </RootType>
@@ -68,6 +70,7 @@
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Visibility" />
+      <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Data.Binding">
       <RootProperty Name="Mode" />
@@ -76,8 +79,15 @@
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.ThemeResourceExtension" />
     <RootType FullName="Windows.UI.Xaml.Controls.ItemsControl">
       <RootProperty Name="ItemsSource" />
-      <RootProperty Name="Height" />
       <RootProperty Name="ItemTemplate" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
+      <RootProperty Name="PrimaryCommands" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
+      <RootProperty Name="Icon" />
+      <RootProperty Name="Label" />
+      <RootProperty Name="Command" />
     </RootType>
     <RootType FullName="NameDay.Namedaydata" />
     <RootType FullName="Windows.UI.Xaml.Controls.RowDefinition">
