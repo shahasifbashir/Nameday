@@ -14,8 +14,9 @@ namespace NameDay
     /// <summary>
     /// This class acts as the data source for the application
     /// </summary>
-    public class Namedaydata : INotifyPropertyChanged
+    public class Namedaydata : ObservableObject
     {
+        public Settings settings { get; } = new Settings();
         private string _greeting = "Hello World!";
         public string greeting
         {
@@ -24,14 +25,7 @@ namespace NameDay
                 return _greeting;
             }
             set
-            {
-                if (value == _greeting)
-                    return;
-                else
-                    _greeting = value;
-                if (PropertyChanged != null)
-                    PropertyChanged(this, new PropertyChangedEventArgs("greeting"));
-            }
+            { Set(ref _greeting, value); }
         }
         // this list will hold the names of all the people in nameday
         private List<NamedarModel> _Namedays = new List<NamedarModel>();
@@ -73,7 +67,6 @@ namespace NameDay
 
         private NamedarModel _selectedNameday;
         //this is the event handle in inotify interface that tell the framework that a specific thing has changeds
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public NamedarModel selectedNameday
         {
@@ -110,11 +103,10 @@ namespace NameDay
             get { return _filter; }
             set
             {
-                if (value == _filter)
-                    return;
-                _filter = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(filter)));
-                performFiltering();
+                if (Set(ref _filter, value))
+                    performFiltering();
+                   
+               
             }
         }
         // this the filtering logic

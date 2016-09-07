@@ -32,6 +32,12 @@
     </Page.Resources>
     <Page.BottomAppBar>
         <CommandBar>
+            <CommandBar.SecondaryCommands>
+                <AppBarToggleButton x:ConnectionId='2' x:Name="appBarToggleButton" Label="Enable Reminder" IsChecked="{Binding settings.NotificationEnabled, Mode=TwoWay}"/>
+                <AppBarToggleButton x:ConnectionId='3' x:Name="appBarToggleButton1" Label="Enable Live Tile" IsChecked="{Binding settings.UpdatingLiveTileEnabled, Mode=TwoWay}"/>
+                <AppBarSeparator/>
+                <AppBarButton x:ConnectionId='4' x:Name="appBarButton" Label="About"                           />
+            </CommandBar.SecondaryCommands>
             <AppBarButton Icon="Calendar" Label="Create Reminder" Command="{Binding AddReminderCommand, Mode=OneWay}"/>
         </CommandBar>
     </Page.BottomAppBar>
@@ -49,15 +55,15 @@
                 <RowDefinition Height="50"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <ListView x:ConnectionId='3' x:Name="listView" ItemTemplate="{StaticResource NamedarModelTemplate}" ItemsSource="{Binding Namedays}" Grid.Row="1" SelectedItem="{Binding selectedNameday, Mode=TwoWay, UpdateSourceTrigger=Default}"/>
-            <TextBox x:ConnectionId='4' x:Name="textBox" TextWrapping="Wrap" Text="{Binding filter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" PlaceholderText="Search for names" FontSize="13.333" Margin="10,10,10,5"/>
+            <ListView x:ConnectionId='6' x:Name="listView" ItemTemplate="{StaticResource NamedarModelTemplate}" ItemsSource="{Binding Namedays}" Grid.Row="1" SelectedItem="{Binding selectedNameday, Mode=TwoWay, UpdateSourceTrigger=Default}"/>
+            <TextBox x:ConnectionId='7' x:Name="textBox" TextWrapping="Wrap" Text="{Binding filter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" PlaceholderText="Search for names" FontSize="13.333" Margin="10,10,10,5"/>
         </Grid>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock x:ConnectionId='2' x:Name="textBlock" HorizontalAlignment="Left" Height="17" Margin="10,0,0,30.2" TextWrapping="Wrap" Text="{Binding greeting}" VerticalAlignment="Bottom" Width="121"/>
+            <TextBlock x:ConnectionId='5' x:Name="textBlock" HorizontalAlignment="Left" Height="17" Margin="10,0,0,30.2" TextWrapping="Wrap" Text="{Binding greeting}" VerticalAlignment="Bottom" Width="121"/>
             <StackPanel Grid.Row="1">
                 <ItemsControl ItemsSource="{Binding Contacts}" ItemTemplate="{StaticResource ContactExTemplate}"/>
             </StackPanel>

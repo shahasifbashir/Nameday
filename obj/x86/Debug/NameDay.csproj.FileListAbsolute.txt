@@ -421,4 +421,8 @@ G:\projects\c# programs\NameDay\NameDay\obj\x86\Debug\Core\Assets\Wide310x150Log
 G:\projects\c# programs\NameDay\NameDay\obj\x86\Debug\Core\NameDay.xr.xml
 G:\projects\c# programs\NameDay\NameDay\obj\x86\Debug\Core\WinMetadata\Windows.winmd
 G:\projects\c# programs\NameDay\NameDay\obj\x86\Debug\Core\resources.pri
-G:\projects\c# programs\NameDay\NameDay\obj\x86\Debug\NameDay.csprojResolveAssemblyReference.cache
+G:\projects\c# programs\NameDay\NameDay\bin\x86\Debug\AboutPage.xbf
+G:\projects\c# programs\NameDay\NameDay\obj\x86\Debug\AboutPage.g.i.cs
+G:\projects\c# programs\NameDay\NameDay\obj\x86\Debug\AboutPage.g.cs
+G:\projects\c# programs\NameDay\NameDay\obj\x86\Debug\AboutPage.xaml
+G:\projects\c# programs\NameDay\NameDay\obj\x86\Debug\AboutPage.xbf
