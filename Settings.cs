@@ -8,6 +8,9 @@ using Windows.Storage;
 
 namespace NameDay
 {
+    /// <summary>
+    /// This class is used to strore the settings in a localfolder
+    /// </summary>
     public class Settings:ObservableObject
     {
         private bool _notificationEnabled = false;

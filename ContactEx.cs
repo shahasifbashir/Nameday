@@ -10,7 +10,12 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 
 namespace NameDay
-{
+{   
+    /// <summary>
+    ///This class acts as a model for the contacts that will be retrived from the user contact list
+    /// we here use the first name, last name,contact picture and the email
+    /// also the email button visibility is controlled from here 
+    /// </summary>
     public class ContactEx
     {
         public Contact Contact { get; }
@@ -30,7 +35,7 @@ namespace NameDay
             GetFirstCharacter(Contact.FirstName) + GetFirstCharacter(Contact.LastName);
         private string GetFirstCharacter(string s) => 
             string.IsNullOrEmpty(s) ? "" : s.Substring(0, 1);
-
+        //This property checks the visibilty of the email button
         public Visibility EmailVisibility =>
             DesignMode.DesignModeEnabled || 
             Contact.Emails.Count > 0 ? Visibility.Visible : Visibility.Collapsed;

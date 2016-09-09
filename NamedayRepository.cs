@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace NameDay
 {
+    /// <summary>
+    /// This class is used to connect to the server and retrive the nameday json file 
+    /// and the the json serializer is used for serialization
+    /// </summary>
     public static class NamedayRepository
     {
         private static List<NamedarModel> allNamedaysCache;

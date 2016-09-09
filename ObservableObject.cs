@@ -9,6 +9,9 @@ using Windows.UI.Xaml;
 
 namespace NameDay
 {
+    /// <summary>
+    /// This is a simple class that is used to notify the framework about a certain change in the system
+    /// </summary>
     public class ObservableObject : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;

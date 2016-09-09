@@ -18,7 +18,9 @@ using Windows.UI.Xaml.Navigation;
 namespace NameDay
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// This is a simple apllication about namedays
+    /// the application downloads the json file from a web server and displays the namedays.
+    /// Author : Shah Asif Bashir 
     /// </summary>
     public sealed partial class MainPage : Page
     {
@@ -38,6 +40,7 @@ namespace NameDay
 
         private void appBarButton_Click(object sender, RoutedEventArgs e)
         {
+            //Here we navigate to the about page
             Frame.Navigate(typeof(AboutPage));
         }
     }
